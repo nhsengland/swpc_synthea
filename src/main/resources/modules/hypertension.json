@@ -887,7 +887,7 @@
       "type": "Simple",
       "conditional_transition": [
         {
-          "transition": "Diagnose_Hypertension",
+          "transition": "Pre_hypertension",
           "condition": {
             "condition_type": "And",
             "conditions": [
@@ -937,6 +937,23 @@
       "submodule": "medications/hypertension_medication",
       "direct_transition": "End_Hypertension_Followup_Encounter_3",
       "name": "Prescribe_Medication_4"
+    },
+    "Pre_hypertension": {
+      "type": "CallSubmodule",
+      "submodule": "pre_modules/pre_hypertension",
+      "name": "Pre_hypertension",
+      "direct_transition": "Check_pre_hypertension_complete"
+    },
+    "Check_pre_hypertension_complete": {
+      "type": "Guard",
+      "allow": {
+        "condition_type": "Attribute",
+        "attribute": "pre_hypertension_complete",
+        "operator": "==",
+        "value": true
+      },
+      "direct_transition": "Diagnose_Hypertension",
+      "name": "Check_pre_hypertension_complete"
     }
   },
   "gmf_version": 1

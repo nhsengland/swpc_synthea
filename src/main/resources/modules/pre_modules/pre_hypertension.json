@@ -1,0 +1,122 @@
+{
+    "name": "pre_hypertension",
+    "remarks": [
+      "A blank module"
+    ],
+    "states": {
+      "Initial": {
+        "type": "Initial",
+        "name": "Initial",
+        "conditional_transition": [
+          {
+            "transition": "Initialize_step",
+            "condition": {
+              "condition_type": "Attribute",
+              "attribute": "pre_hypertension_step",
+              "operator": "is nil"
+            }
+          },
+          {
+            "transition": "Test_record_BP"
+          }
+        ]
+      },
+      "Terminal": {
+        "type": "Terminal",
+        "name": "Terminal"
+      },
+      "Test_record_BP": {
+        "type": "MultiObservation",
+        "category": "vital-signs",
+        "number_of_observations": 0,
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "85354-9",
+            "display": "Blood pressure panel with all children optional",
+            "value_set": ""
+          }
+        ],
+        "direct_transition": "Check_step",
+        "name": "Test_record_BP",
+        "observations": [
+          {
+            "category": "vital-signs",
+            "unit": "mm[Hg]",
+            "codes": [
+              {
+                "system": "LOINC",
+                "code": "8480-6",
+                "display": "Systolic Blood Pressure"
+              }
+            ],
+            "vital_sign": "Systolic Blood Pressure"
+          },
+          {
+            "category": "vital-signs",
+            "unit": "mm[Hg]",
+            "codes": [
+              {
+                "system": "LOINC",
+                "code": "8462-4",
+                "display": "Diastolic Blood Pressure"
+              }
+            ],
+            "vital_sign": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "Delay": {
+        "type": "Delay",
+        "distribution": {
+          "kind": "EXACT",
+          "parameters": {
+            "value": 6
+          }
+        },
+        "unit": "months",
+        "direct_transition": "Increase_step",
+        "name": "Delay"
+      },
+      "pre_hypertension_complete": {
+        "type": "SetAttribute",
+        "attribute": "pre_hypertension_complete",
+        "direct_transition": "Terminal",
+        "name": "pre_hypertension_complete",
+        "value": true
+      },
+      "Initialize_step": {
+        "type": "SetAttribute",
+        "attribute": "pre_hypertension_step",
+        "direct_transition": "Test_record_BP",
+        "name": "Initialize_step",
+        "value": 1
+      },
+      "Increase_step": {
+        "type": "Counter",
+        "attribute": "pre_hypertension_step",
+        "action": "increment",
+        "direct_transition": "Test_record_BP",
+        "name": "Increase_step"
+      },
+      "Check_step": {
+        "type": "Simple",
+        "name": "Check_step",
+        "conditional_transition": [
+          {
+            "transition": "Delay",
+            "condition": {
+              "condition_type": "Attribute",
+              "attribute": "pre_hypertension_step",
+              "operator": "<=",
+              "value": 4
+            }
+          },
+          {
+            "transition": "pre_hypertension_complete"
+          }
+        ]
+      }
+    },
+    "gmf_version": 2
+  }
