@@ -12,21 +12,18 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../dev/">
+        <link rel="next" href="../devs/dev/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
-        <title>Users - Artificial Primary Care Data</title>
+        <title>Generating Data - Artificial Primary Care Data</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.402914a4.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -52,14 +49,11 @@
   </head>
   
   
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -67,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-swpc_synthea" class="md-skip">
+        <a href="#generating-a-patient-dataset-with-personalised-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Users
+              Generating Data
             
           </span>
         </div>
@@ -178,7 +172,7 @@
 
   <li class="md-tabs__item">
     <a href="./" class="md-tabs__link md-tabs__link--active">
-      Users
+      Generating Data
     </a>
   </li>
 
@@ -188,11 +182,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../dev/" class="md-tabs__link">
-      Devs
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../devs/dev/" class="md-tabs__link">
+        Developer Information
+      </a>
+    </li>
+  
 
       
         
@@ -201,8 +199,8 @@
 
 
   <li class="md-tabs__item">
-    <a href="../java/" class="md-tabs__link">
-      Java
+    <a href="../ukadaptions/" class="md-tabs__link">
+      UK Adaptations
     </a>
   </li>
 
@@ -225,8 +223,8 @@
 
 
   <li class="md-tabs__item">
-    <a href="../ukadaptions/" class="md-tabs__link">
-      UK Adaptations
+    <a href="../hypertensiondataset/" class="md-tabs__link">
+      Hypertension Dataset
     </a>
   </li>
 
@@ -295,9 +293,67 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Generating Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-        Users
+        Generating Data
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-swpc_synthea" class="md-nav__link">
+    Set up swpc_synthea
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-patient-dataset" class="md-nav__link">
+    Creating a patient dataset
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a patient dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synthea-properties" class="md-nav__link">
+    Synthea Properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-a-patient-dataset" class="md-nav__link">
+    Integrating a patient dataset
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -310,24 +366,86 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Developer Information
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Information
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../dev/" class="md-nav__link">
-        Devs
+      <a href="../devs/dev/" class="md-nav__link">
+        Developer Information
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
+      <a href="../devs/resources/" class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devs/java/" class="md-nav__link">
         Java
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ukadaptions/" class="md-nav__link">
+        UK Adaptations
       </a>
     </li>
   
@@ -356,8 +474,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../ukadaptions/" class="md-nav__link">
-        UK Adaptations
+      <a href="../hypertensiondataset/" class="md-nav__link">
+        Hypertension Dataset
       </a>
     </li>
   
@@ -383,6 +501,48 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-swpc_synthea" class="md-nav__link">
+    Set up swpc_synthea
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-patient-dataset" class="md-nav__link">
+    Creating a patient dataset
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a patient dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synthea-properties" class="md-nav__link">
+    Synthea Properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-a-patient-dataset" class="md-nav__link">
+    Integrating a patient dataset
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -396,17 +556,15 @@
                   
 
 
-<h1 id="setup-swpc_synthea">Setup swpc_Synthea</h1>
-<p>See <a href="https://github.com/nhsengland/swpc_synthea/blob/master/README.md">Readme</a></p>
-<h1 id="creating-a-patient-dataset">Creating a patient dataset</h1>
-<p>See the original Synthea documentationt that can be found <a href="https://github.com/synthetichealth/synthea/wiki/Basic-Setup-and-Running">here</a>.</p>
-<h1 id="interegating-a-patient-dataset">Interegating a patient dataset</h1>
-<p>PLACEHOLDER</p>
-<h1 id="configuration">Configuration</h1>
-<h2 id="synthea-properties">Synthea Properties</h2>
+<h1 id="generating-a-patient-dataset-with-personalised-configuration">Generating a patient dataset with personalised configuration</h1>
+<h2 id="set-up-swpc_synthea">Set up swpc_synthea</h2>
+<p>See <a href="https://github.com/nhsengland/swpc_synthea/blob/master/README.md">Readme</a>.</p>
+<h2 id="creating-a-patient-dataset">Creating a patient dataset</h2>
+<p>See the original Synthea documentation that can be found <a href="https://github.com/synthetichealth/synthea/wiki/Basic-Setup-and-Running">here</a>.</p>
+<h3 id="synthea-properties">Synthea Properties</h3>
 <p>The <code>src/main/resources/synthea.properties</code> file controls the main configuration of the simulation</p>
 <p>Here is a reduced view of the file for the main configuration options used in swpc_synthea and their default values</p>
-<pre><code>exporter.baseDirectory = ./output/
+<div class="highlight"><pre><span></span><code>exporter.baseDirectory = ./output/
 exporter.use_uuid_filenames = false
 exporter.subfolders_by_id_substring = false
 exporter.years_of_history = 10
@@ -427,7 +585,7 @@ generate.log_patients.detail = simple
 # options are &quot;none&quot;, &quot;simple&quot;, or &quot;detailed&quot; (without quotes). defaults to simple if another value is used
 # none = print nothing to the console during generation
 # simple = print patient names once they are generated.
-# detailed = print patient names, atributes, vital signs, etc..  May slow down processing
+# detailed = print patient names, attributes, vital signs, etc..  May slow down processing
 
 generate.timestep = 604800000
 # time is in ms
@@ -542,7 +700,9 @@ physiology.state.enabled = false
 # set to true to introduce errors in height, weight and BMI observations for people
 # under 20 years old
 growtherrors = false
-</code></pre>
+</code></pre></div>
+<h2 id="integrating-a-patient-dataset">Integrating a patient dataset</h2>
+<p>PLACEHOLDER</p>
 
 
 
@@ -580,10 +740,10 @@ growtherrors = false
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b78d2936.min.js"></script>
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>

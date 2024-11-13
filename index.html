@@ -13,7 +13,7 @@
         <link rel="next" href="users/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
     
     
       
@@ -21,10 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.402914a4.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -50,14 +47,11 @@
   </head>
   
   
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -65,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generating-primary-care-data-using-uk-version-of-synthea" class="md-skip">
+        <a href="#generating-primary-care-data-using-uk-adaptation-of-synthea" class="md-skip">
           Skip to content
         </a>
       
@@ -176,7 +170,7 @@
 
   <li class="md-tabs__item">
     <a href="users/" class="md-tabs__link">
-      Users
+      Generating Data
     </a>
   </li>
 
@@ -186,11 +180,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="dev/" class="md-tabs__link">
-      Devs
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="devs/dev/" class="md-tabs__link">
+        Developer Information
+      </a>
+    </li>
+  
 
       
         
@@ -199,8 +197,8 @@
 
 
   <li class="md-tabs__item">
-    <a href="java/" class="md-tabs__link">
-      Java
+    <a href="ukadaptions/" class="md-tabs__link">
+      UK Adaptations
     </a>
   </li>
 
@@ -223,8 +221,8 @@
 
 
   <li class="md-tabs__item">
-    <a href="ukadaptions/" class="md-tabs__link">
-      UK Adaptations
+    <a href="hypertensiondataset/" class="md-tabs__link">
+      Hypertension Dataset
     </a>
   </li>
 
@@ -339,7 +337,7 @@
   
     <li class="md-nav__item">
       <a href="users/" class="md-nav__link">
-        Users
+        Generating Data
       </a>
     </li>
   
@@ -352,24 +350,86 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Developer Information
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Information
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="dev/" class="md-nav__link">
-        Devs
+      <a href="devs/dev/" class="md-nav__link">
+        Developer Information
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
     <li class="md-nav__item">
-      <a href="java/" class="md-nav__link">
+      <a href="devs/resources/" class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="devs/java/" class="md-nav__link">
         Java
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ukadaptions/" class="md-nav__link">
+        UK Adaptations
       </a>
     </li>
   
@@ -398,8 +458,8 @@
   
   
     <li class="md-nav__item">
-      <a href="ukadaptions/" class="md-nav__link">
-        UK Adaptations
+      <a href="hypertensiondataset/" class="md-nav__link">
+        Hypertension Dataset
       </a>
     </li>
   
@@ -466,17 +526,15 @@
                   
 
 
-<h1 id="generating-primary-care-data-using-uk-version-of-synthea">Generating Primary Care Data Using UK Version of <a href="https://synthetichealth.github.io/synthea/">Synthea</a></h1>
+<h1 id="generating-primary-care-data-using-uk-adaptation-of-synthea">Generating Primary Care Data Using UK Adaptation of <a href="https://synthetichealth.github.io/synthea/">Synthea</a></h1>
 <p>Primary care records are crucial for understanding healthcare interactions at both the population and individual levels. However, these records are difficult to obtain and integrate with other services, hindering innovation due to data unavailability and privacy concerns.</p>
-<p>Our project aims to address this by developing a code base to generate primary care electronic health records. We start by creating a synthetic population that mirrors a region in England, and then adapt the US-based tool <a href="https://synthetichealth.github.io/synthea/">Synthea</a> for the English NHS context (particularly focusing on the South West of England). We chose Synthea as it is already a highly developed, accuracy tested synthetic generator, and adapting it is relatively simple with clinical input. It is also highly efficient and quick to generate large amounts of data. </p>
+<p>Our project aims to address this by developing a code base to generate primary care electronic health records. We start by creating a synthetic population that mirrors a region in England (currently focusing on the South West of England), and then adapt the US-based tool <a href="https://synthetichealth.github.io/synthea/">Synthea</a> for the English NHS context. We chose Synthea as it is already a highly developed, accuracy tested synthetic generator, and adapting it is relatively simple with clinical input. It is also highly efficient and quick to generate large amounts of data. </p>
 <p>See the <a href="https://nhsengland.github.io/datascience/our_work/swpclab/">data science website</a> for more details on the aims of the project. </p>
 <h2 id="usage-and-limitations">Usage and Limitations</h2>
-<p>The aim of Synthea is to produce data that is "Realistic but not real." 
-This means that data produced by Synthea can be used to trial systems, and to test software and procedures, but it should not be used to draw statistical insight or do analysis. </p>
-<p>The UK adaptation of Synthea has removed several features which were US specific, and integrates UK statistics 
-Details of the available features can be found <a href="https://github.com/nhsengland/swpc_synthea/blob/Adds_acceptible_usage/docs/ukadaptions.md">here</a></p>
+<p>The aim of Synthea is to produce data that is "Realistic but not real." This means that data produced by Synthea can be used to trial systems, and to test software and procedures, but it should not be used to draw statistical insight or do analysis. </p>
+<p>The UK adaptation of Synthea has removed several features which were US specific, and integrates UK statistics. Details of the UK adaptations implemented can be found <a href="https://github.com/nhsengland/swpc_synthea/blob/Adds_acceptible_usage/docs/ukadaptions.md">here</a>.</p>
 <h3 id="evaluation">Evaluation</h3>
-<p>The functionality and stability of the release has been "smoke-tested" by assuring valid outputs can be optained when using various option flags described in the documentation. </p>
+<p>The functionality and stability of the release has been "smoke-tested" by assuring valid outputs can be obtained when using various option flags described in the documentation. </p>
 <p>In the current release of the UK Adaptation of Synthea there have not been any statistical validations of outputs. </p>
 
 
@@ -515,10 +573,10 @@ Details of the available features can be found <a href="https://github.com/nhsen
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs"], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.b78d2936.min.js"></script>
+      <script src="assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>
