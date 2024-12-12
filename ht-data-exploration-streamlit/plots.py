@@ -23,12 +23,12 @@ col1, col2 = st.columns(2)
 
 with col1:     
     ht_conds = conds[conds["DESCRIPTION"] == "Essential hypertension (disorder)"]
-    patients = len(list(pats["Id"]))
+    patients_count = len(list(pats["Id"]))
     ht_patients = list(set(conds[conds["DESCRIPTION"] == "Essential hypertension (disorder)"]["PATIENT"]))
     num_ht = len(ht_patients)
 
     fig, ax = plt.subplots(1,1, figsize=(6,3))
-    ax.bar(['Hypertension', 'No Hypertension'], [num_ht, patients-num_ht], color="lightcoral")
+    ax.bar(['Hypertension', 'No Hypertension'], [num_ht, patients_count-num_ht], color="lightcoral")
 
     title = f"Number of Patients with and without hypertension"
 
@@ -127,4 +127,55 @@ def plot_timeline(df):
 timeline_plot = plot_timeline(timeline_df)
 st.pyplot(timeline_plot)
 
-st.plotly_chart(create_sankey_diagram())
+meds_ht = meds[meds['REASONCODE']=='Essential hypertension (disorder)']['PATIENT'].nunique()
+
+total_no_hypertension_patients = patients_count - num_ht
+# medicated_dead = 20, 
+# medicated_alive = 730, unmedicated_dead = 10,
+# unmedicated_alive = 40, no_hypertension_alive = 190,
+# no_hypertension_dead = 10
+# ht_patients = list(set(conds[conds["DESCRIPTION"] == "Essential hypertension (disorder)"]["PATIENT"]))
+
+st.write(ht_patients)
+
+st.plotly_chart(
+    create_sankey_diagram(total_hypertension_patients=num_ht, 
+                        total_no_hypertension_patients= total_no_hypertension_patients,
+                        total_medicated=meds_ht, 
+                        total_unmedicated=total_no_hypertension_patients - meds_ht)
+                )
+
+current_date = pd.Timestamp.now()
+
+ht_conds['START'] = pd.to_datetime(ht_conds['START'])
+ht_conds['STOP'] = pd.to_datetime(ht_conds['STOP'])
+
+pats_death = pats[['Id', 'DEATHDATE']]
+ht_conds_with_death = pd.merge(ht_conds, pats, left_on='PATIENT', right_on='Id', how='left')
+
+ht_conds_with_death['STOP'] = ht_conds_with_death['STOP'].fillna(ht_conds_with_death['DEATHDATE'])
+ht_conds_with_death['STOP'] = ht_conds_with_death['STOP'].fillna(current_date)
+
+
+# Create a DataFrame with all unique dates
+all_dates = pd.date_range(start=ht_conds_with_death['START'].min(), end=ht_conds_with_death['STOP'].max())
+date_df = pd.DataFrame(all_dates, columns=['DATE'])
+
+# Calculate cumulative count of patients with hypertension for each date
+date_df['CUMULATIVE_COUNT'] = date_df['DATE'].apply(
+    lambda x: ((ht_conds_with_death['START'] <= x) & (ht_conds_with_death['STOP'] >= x)).sum()
+)
+
+# Plotting
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(date_df['DATE'], date_df['CUMULATIVE_COUNT'], marker=None, linestyle='-', linewidth=2)
+
+# Set labels and title
+ax.set_xlabel('Date')
+ax.set_ylabel('Cumulative Count of Patients with Hypertension')
+ax.set_title('Cumulative Count of Patients with Hypertension Over Time')
+
+# Rotate x-ticks for better readability
+plt.xticks(rotation=45)
+
+st.pyplot(fig)

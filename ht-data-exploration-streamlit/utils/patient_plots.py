@@ -41,17 +41,14 @@ def plot_bp(patient_id, obs_df, conds, meds):
     plt.legend()
     st.pyplot(fig, use_container_width=False)
 
-def create_sankey_diagram(df=None):
-    total_hypertension_patients = 800
-    total_no_hypertension_patients = 200
-    total_medicated = 750
-    total_unmedicated = 50
-    medicated_dead = 20
-    medicated_alive = 730
-    unmedicated_dead = 10
-    unmedicated_alive = 40
-    no_hypertension_alive = 190
-    no_hypertension_dead = 10
+def create_sankey_diagram(df=None, 
+                          total_hypertension_patients = 800,
+                          total_no_hypertension_patients = 200,
+                          total_medicated = 750, total_unmedicated = 50, 
+                          medicated_dead = 20, 
+                          medicated_alive = 730, unmedicated_dead = 10,
+                          unmedicated_alive = 40, no_hypertension_alive = 190,
+                          no_hypertension_dead = 10):
 
     fig = go.Figure(data=[go.Sankey(
         node = dict(
