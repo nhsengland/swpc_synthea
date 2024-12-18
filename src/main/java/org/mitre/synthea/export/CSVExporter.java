@@ -305,7 +305,7 @@ public class CSVExporter {
     patients.write("Id,BIRTHDATE,DEATHDATE,SSN,DRIVERS,PASSPORT,"
         + "PREFIX,FIRST,MIDDLE,LAST,SUFFIX,MAIDEN,MARITAL,RACE,ETHNICITY,GENDER,BIRTHPLACE,"
         + "ADDRESS,CITY,STATE,COUNTY,FIPS,POSTCODE,LAT,LON,"
-        + "HEALTHCARE_EXPENSES,HEALTHCARE_COVERAGE,INCOME");
+        + "INCOME");
     patients.write(NEWLINE);
     allergies.write("START,STOP,PATIENT,ENCOUNTER,CODE,SYSTEM,DESCRIPTION,TYPE,CATEGORY,"
         + "REACTION1,DESCRIPTION1,SEVERITY1,REACTION2,DESCRIPTION2,SEVERITY2");
@@ -1255,7 +1255,7 @@ public class CSVExporter {
     s.append(org.getResourceID()).append(',');
     s.append(clean(org.name)).append(',');
     s.append(clean(org.address)).append(',');
-    s.append(org.city).append(',');
+    s.append(clean(org.city)).append(',');
     s.append(org.state).append(',');
     s.append(org.postcode).append(',');
     s.append(org.getY()).append(',');
