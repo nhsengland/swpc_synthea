@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NHS Patient Summary</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f5; color: #333; padding: 20px; }
+        .header { background: #005EB8; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .content { padding: 20px; }
+        .section { margin-bottom: 30px; }
+        h1 { margin: 0; font-size: 24px; }
+        h2 { color: #005EB8; border-bottom: 2px solid #005EB8; padding-bottom: 5px; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f8f9fa; font-weight: 600; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; background: #eee; }
+        .active { background: #d1fae5; color: #065f46; } /* Green */
+        .stopped { background: #fee2e2; color: #991b1b; } /* Red */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>NHS Patient Summary</h1>
+            <p>{{ p.FIRST }} {{ p.LAST }} | DOB: {{ p.BIRTHDATE }} (Age: {{ age }}) | Gender: {{ p.GENDER }}</p>
+            <small>ID: {{ p.Id }}</small>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Conditions</h2>
+                {% if conditions %}
+                <table>
+                    <thead><tr><th>Condition</th><th>Start Date</th><th>Stop Date</th></tr></thead>
+                    <tbody>
+                    {% for c in conditions %}
+                    <tr>
+                        <td>{{ c.DESCRIPTION }}</td>
+                        <td>{{ c.START }}</td>
+                        <td>
+                            {% if c.STOP and c.STOP != 'nan' and c.STOP != 'Active' %}
+                                <span class="badge stopped">{{ c.STOP }}</span>
+                            {% else %}
+                                <span class="badge active">Active</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No recorded conditions.</p>
+                {% endif %}
+            </div>
+
+            <div class="section">
+                <h2>Medications</h2>
+                {% if medications %}
+                <table>
+                    <thead><tr><th>Medication</th><th>Start Date</th><th>Stop Date</th></tr></thead>
+                    <tbody>
+                    {% for m in medications %}
+                    <tr>
+                        <td>{{ m.DESCRIPTION }}</td>
+                        <td>{{ m.START }}</td>
+                        <td>
+                            {% if m.STOP and m.STOP != 'nan' and m.STOP != 'Active' %}
+                                <span class="badge stopped">{{ m.STOP }}</span>
+                            {% else %}
+                                <span class="badge active">Active</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No recorded medications.</p>
+                {% endif %}
+            </div>
+
+            <div class="section">
+                <h2>Allergies</h2>
+                {% if allergies %}
+                <table>
+                    <thead><tr><th>Allergy</th><th>Start Date</th></tr></thead>
+                    <tbody>
+                    {% for a in allergies %}
+                    <tr>
+                        <td>{{ a.DESCRIPTION }}</td>
+                        <td>{{ a.START }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No known allergies.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
